@@ -2,8 +2,7 @@ plugins {
     id "groovy" 
     id "org.grails.grails-gsp" 
     id "org.grails.grails-web" 
-    id "com.github.erdi.webdriver-binaries" version "3.0"
-    id "war" 
+    id "war"
     id "idea" 
     id "com.bertramlabs.asset-pipeline" 
     id "application" 
@@ -21,11 +20,6 @@ repositories {
 configurations {
     all {
         resolutionStrategy.force 'org.codehaus.groovy:groovy-xml:3.0.13'
-        resolutionStrategy.eachDependency { DependencyResolveDetails details->
-            if (details.requested.group == 'org.seleniumhq.selenium') {
-                details.useVersion('4.10.0')
-            }
-        }
     }
 }
 
@@ -62,14 +56,7 @@ dependencies {
     testImplementation("io.micronaut:micronaut-inject-groovy")
     testImplementation("org.grails:grails-gorm-testing-support")
     testImplementation("org.grails:grails-web-testing-support")
-    testImplementation("org.grails.plugins:geb")
-    testImplementation("org.seleniumhq.selenium:selenium-api:4.10.0")
-    testImplementation("org.seleniumhq.selenium:selenium-remote-driver:4.10.0")
-    testImplementation("org.seleniumhq.selenium:selenium-support:4.10.0")
     testImplementation("org.spockframework:spock-core")
-    testRuntimeOnly("org.seleniumhq.selenium:selenium-chrome-driver:4.10.0")
-    testRuntimeOnly("org.seleniumhq.selenium:selenium-firefox-driver:4.10.0")
-    testRuntimeOnly("org.seleniumhq.selenium:selenium-safari-driver:4.10.0")
     testImplementation("io.micronaut:micronaut-http-client")
 
 }
@@ -84,18 +71,9 @@ java {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-    systemProperty "geb.env", System.getProperty('geb.env')
-    systemProperty "geb.build.reportsDir", reporting.file("geb/integrationTest")
-    systemProperty 'webdriver.chrome.driver', "${System.getenv('CHROMEWEBDRIVER')}/chromedriver"
-    systemProperty 'webdriver.gecko.driver', "${System.getenv('GECKOWEBDRIVER')}/geckodriver"
 }
 tasks.withType(War).configureEach { War war ->
     war.dependsOn compileGroovyPages
-}
-webdriverBinaries {
-    chromedriver '110.0.5481.77'
-    geckodriver '0.32.2'
-    edgedriver '110.0.1587.57'
 }
 assets {
     minifyJs = true
