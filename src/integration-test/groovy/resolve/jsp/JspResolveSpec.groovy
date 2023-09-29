@@ -9,7 +9,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 @Integration
-class JspControllerSpec extends Specification {
+class JspResolveSpec extends Specification {
 
     @Shared HttpClient client
 
@@ -27,7 +27,7 @@ class JspControllerSpec extends Specification {
             resp.contains 'Hello from JSP'
     }
 
-    void 'test direct url mapping to view'() {
+    void 'test direct url mapping to a JSP view'() {
         when: 'going to a jsp view directly'
             String resp = client.toBlocking().retrieve(HttpRequest.GET('/hello'), String)
 
