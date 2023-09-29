@@ -4,12 +4,10 @@ plugins {
     id "org.grails.grails-web" 
     id "war"
     id "idea" 
-    id "com.bertramlabs.asset-pipeline" 
-    id "application" 
+    id "application"
     id "eclipse" 
 }
 
-version "0.1"
 group = "resolve.jsp"
 
 repositories {
@@ -33,10 +31,6 @@ dependencies {
     implementation("org.grails:grails-plugin-services")
     implementation("org.grails:grails-plugin-url-mappings")
     implementation("org.grails:grails-web-boot")
-    implementation("org.grails.plugins:gsp:6.0.3")
-    implementation("org.grails.plugins:hibernate5")
-    implementation("org.grails.plugins:scaffolding")
-    implementation("org.hibernate:hibernate-core:5.6.15.Final")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -45,10 +39,11 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
+
+    implementation("org.grails.plugins:gsp:6.0.3")
     runtimeOnly("jstl:jstl:1.2")
     runtimeOnly("org.grails:grails-web-jsp:6.0.3")
-    runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
-    runtimeOnly("com.h2database:h2")
+
     runtimeOnly("javax.xml.bind:jaxb-api:2.3.1")
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
     runtimeOnly("org.fusesource.jansi:jansi:1.18")
@@ -74,8 +69,4 @@ tasks.withType(Test) {
 }
 tasks.withType(War).configureEach { War war ->
     war.dependsOn compileGroovyPages
-}
-assets {
-    minifyJs = true
-    minifyCss = true
 }
