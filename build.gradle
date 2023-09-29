@@ -46,7 +46,7 @@ dependencies {
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
     runtimeOnly("jstl:jstl:1.2")
-    runtimeOnly("org.grails:grails-web-jsp")
+    runtimeOnly("org.grails:grails-web-jsp:6.0.3")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("javax.xml.bind:jaxb-api:2.3.1")
