@@ -19,12 +19,21 @@ class JspControllerSpec extends Specification {
         this.client = HttpClient.create(baseUrl.toURL())
     }
 
-    void 'test something'() {
+    void 'test calling a controller that renders a JSP'() {
         when: 'going to the jsp controller'
             String resp = client.toBlocking().retrieve(HttpRequest.GET('/jsp/test'), String)
 
-        then: 'The title is correct'
+        then: 'the content is correct'
             resp.contains 'Hello from JSP'
+    }
+
+    void 'test direct url mapping to view'() {
+        when: 'going to a jsp view directly'
+            String resp = client.toBlocking().retrieve(HttpRequest.GET('/hello'), String)
+
+        then: 'the content is correct'
+            resp.contains 'Hello JSP'
+
     }
 
 }
