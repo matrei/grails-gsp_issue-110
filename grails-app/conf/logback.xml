@@ -17,5 +17,6 @@
     </root>
 
     <logger name="org.grails.web.servlet.view" level="debug" additivity="false"><appender-ref ref="STDOUT"/></logger>
+    <logger name="org.grails.web.sitemesh" level="debug" additivity="false"><appender-ref ref="STDOUT"/></logger>
 
 </configuration>
