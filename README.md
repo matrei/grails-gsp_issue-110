@@ -1,23 +1,12 @@
-## Grails 6.0.0 Documentation
+# Using JSP in Grails
+• JSPs must be located in `src/main/webapp/WEB-INF/grails-app/views`
 
-- [User Guide](https://docs.grails.org/6.0.0/guide/index.html)
-- [API Reference](https://docs.grails.org/6.0.0/api/index.html)
-- [Grails Guides](https://guides.grails.org/index.html)
----
+• View paths must be explicitly declared `render(view: '/book/edit')`
 
-## Feature scaffolding documentation
-
-- [Grails Scaffolding Plugin documentation](https://grails.github.io/scaffolding/latest/groovydoc/)
-
-- [https://grails-fields-plugin.github.io/grails-fields/latest/guide/index.html](https://grails-fields-plugin.github.io/grails-fields/latest/guide/index.html)
-
-## Feature asset-pipeline-grails documentation
-
-- [Grails Asset Pipeline Core documentation](https://www.asset-pipeline.com/manual/)
-
-## Feature geb documentation
-
-- [Grails Geb Functional Testing for Grails documentation](https://github.com/grails3-plugins/geb#readme)
-
-- [https://www.gebish.org/manual/current/](https://www.gebish.org/manual/current/)
-
+Dependencies needed:
+```groovy
+implementation("org.grails.plugins:gsp:6.0.3") // At least 6.0.1
+runtimeOnly("jstl:jstl:1.2")
+runtimeOnly("org.apache.tomcat.embed:tomcat-embed-jasper")
+runtimeOnly("org.grails:grails-web-jsp:6.0.3") // At least 6.0.1
+```
